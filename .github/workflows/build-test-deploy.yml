@@ -7,12 +7,20 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: checkout repo #this retrieves the repo's code and allows the worlkflow to access the contents of the repo
+      - name: checkout repo # this retrieves the repo's code and allows the worlkflow to access the contents of the repo
         uses: actions/checkout@v4
       - name: use node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
-      - run: npm install
-      - run: npm run build
+          cache: 'npm'
+      # - run: npm install
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build
+        env:
+          NODE_OPTIONS: --openssl-legacy-provider
+        run: npm run build
+
       
