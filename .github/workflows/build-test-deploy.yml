@@ -4,7 +4,7 @@ on: push
 
 jobs:
   build:
-    runs-on: ubunto-lates
+    runs-on: ubuntu-latest
     
     steps:
       - name: checkout repo #this retrieves the repo's code and allows the worlkflow to access the contents of the repo
